@@ -4,86 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='styles.css'>
+    <script src="rock-paper-scissors.js" defer></script>
     <title>Rock-Paper-Scissors</title>
 </head>
+
 <body>
-    <script>
+    <div class='header'>Rock, Paper, Scissors!</div>
 
-        //Players Chooses: "Rock", "Paper", or "Scissors".
-        function playerPlay(){
-            let options = ["ROCK", "PAPER", "SCISSORS"];
-            let playerSelection = prompt("ROCK, PAPER, or SCISSORS?");
+    <h1>First Player to 5 wins!</h1>
 
-            // While playerSelection isn't in options[] or is null or undefinded, keep prompting the player for another choice.
-            while (!options.includes(playerSelection.toUpperCase()) || playerSelection == null || playerSelection == undefined){
-                console.log('Invalid Selection!');
-                console.log('');
-                playerSelection = prompt("Invalid! Select: ROCK, PAPER, or SCISSORS?").toUpperCase();
-            }  
-            return playerSelection.toUpperCase();
-        }
+    <div class='main'>
+        <div class='playerContainer'>
+            <div class='title'>Player</div>
+            <div class='score'>Score:</div>
+            <div class='optionsContainer'>
+                <button class='option'>Rock</button>
+                <button class='option'>Paper</button>
+                <button class='option'>Scissors</button>
+            </div>
+        </div>
 
+        <div class='matchHistory'></div>
 
-        //Computer Randomly Selects "Rock", "Paper", or "Scissors".
-        function computerPlay() {
-            let computerSelection = ["ROCK", "PAPER", "SCISSORS"];
-            return computerSelection[(Math.floor(Math.random() * 3))];
-        }
+        <div class='computerContainer'>
+            <div class='title'>Computer</div>
+            <div class='score'>Score:</div>
+            <div class='optionsContainer'>
+                <button class='option'>Rock</button>
+                <button class='option'>Paper</button>
+                <button class='option'>Scissors</button>
+            </div>
+        </div>
+    </div>
 
-
-        //Determine Who Wins Between the Player and Computer.
-        //[ROCK = 0, PAPER = 1, SCISSORS = 2]
-        function playRound(playerSelection, computerSelection) {
-            let options = ["ROCK", "PAPER", "SCISSORS"];
-            return options.indexOf(computerSelection) - options.indexOf(playerSelection);
-        }
-
-
-        //Play 5 Rounds. Determine the Winner.
-        function game() {
-            const ROUNDS = 2;
-            let playerScore = 0;
-            let computerScore = 0;
-
-            while ((playerScore < ROUNDS) && (computerScore < ROUNDS)){
-                let player = playerPlay();
-                console.log('Player Selects: ' + player);
-                let computer = computerPlay();
-                console.log('Computer Selects: ' + computer);
-                let outcome = playRound(player, computer);
-
-                if (outcome == 0){
-                    console.log('You Both Tied!');
-                }
-
-                if (outcome == -2 ||outcome == 1){
-                    computerScore += 1;
-                    console.log('You Lose!');
-                }
-
-                if (outcome == -1 || outcome == 2){
-                    playerScore += 1;
-                    console.log('You Win!');
-                } 
-                console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
-                console.log('');
-            }
-
-            if (playerScore == ROUNDS) {
-                console.log('Congratulations! You Win');
-                return;
-            }
-
-            if (computerScore == ROUNDS) {
-                console.log('Sorry! The Computer Wins');
-                return;
-            }
-        }
-
-        game()
-
-    </script>
-
+    <div class='footer'>Footer</div>
     
 </body>
+
 </html>

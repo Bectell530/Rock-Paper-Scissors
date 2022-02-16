@@ -1,0 +1,76 @@
+body{
+    background-color: #222831;
+    color: honeydew;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    font-size: 100px;
+    border: solid black 5px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    border: solid black 5px;
+    font-size: 30px;
+    width: 100%;
+    padding: 20px;
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+    border: solid red 5px;
+    height: 500px;
+    width: 100%;
+}
+
+.playerContainer, 
+.computerContainer{
+    display:flex;
+    flex-direction: column;
+    border: solid black 5px;
+    border-radius: 20px;
+    align-items: center;
+    justify-content:space-evenly;
+    width: 500px;
+    margin: 20px;
+}
+
+.matchHistory{
+    display: flex;
+    border: solid black 5px;
+    width: 300px;
+    margin: 20px;
+}
+
+.title{
+    font-size: 60px;
+}
+
+.score{
+    font-size: 40px;
+}
+
+.optionsContainer{
+    display: flex;
+    gap: 10px;
+    border: solid red 5px;
+}
+
+button{
+    border: solid black 3px;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
