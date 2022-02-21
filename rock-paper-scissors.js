@@ -1,72 +1,84 @@
+let playerScore = 0;
+let computerScore = 0;
 
-//Players Chooses: "Rock", "Paper", or "Scissors".
-function playerPlay(){
-    let options = ["ROCK", "PAPER", "SCISSORS"];
-    let playerSelection = prompt("ROCK, PAPER, or SCISSORS?");
+//Updates the Outcome History.
+const history = document.querySelector('.resultsContainer');
+const buttons = document.querySelector('body');
 
-    // While playerSelection isn't in options[] or is null or undefinded, keep prompting the player for another choice.
-    while (!options.includes(playerSelection.toUpperCase()) || playerSelection == null || playerSelection == undefined){
-        console.log('Invalid Selection!');
-        console.log('');
-        playerSelection = prompt("Invalid! Select: ROCK, PAPER, or SCISSORS?").toUpperCase();
-    }  
-    return playerSelection.toUpperCase();
+
+//Play a Round.
+function playRound(event) {
+    let player = event.target.id;
+    let computer = computerPlay();
+    let outcome = determineWinner(player, computer);
+    updateHistory(player, computer);
+
+    if (outcome == 0) return;
+    if (outcome == -2 ||outcome == 1) computerScore++;
+    if (outcome == -1 || outcome == 2) playerScore++;     
 }
-
 
 //Computer Randomly Selects "Rock", "Paper", or "Scissors".
 function computerPlay() {
-    let computerSelection = ["ROCK", "PAPER", "SCISSORS"];
+    let computerSelection = ["Rock", "Paper", "Scissors"];
     return computerSelection[(Math.floor(Math.random() * 3))];
 }
 
-
 //Determine Who Wins Between the Player and Computer.
-//[ROCK = 0, PAPER = 1, SCISSORS = 2]
-function playRound(playerSelection, computerSelection) {
-    let options = ["ROCK", "PAPER", "SCISSORS"];
-    return options.indexOf(computerSelection) - options.indexOf(playerSelection);
+function determineWinner(player, computer) {
+    let options = ["Rock", "Paper", "Scissors"];
+    return options.indexOf(computer) - options.indexOf(player);
+}
+
+//Starts a New Game. Sets Both Players Scores to Zero.
+function startNewGame(){
+    playerScore = 0;
+    computerScore = 0;
+    updateScore();
+    clearHistory();
+}
+
+//Updates Players Scores After Each Round.
+function updateScore(){
+    const pScore = document.querySelector('.playerScore');
+    const cScore = document.querySelector('.computerScore');
+    pScore.textContent = playerScore;
+    cScore.textContent = computerScore;
+}
+
+//Check For 5 Wins. Start New Game If True.
+function checkForWinner(){
+    if(playerScore == 5){
+        console.log('Player Wins!')
+        startNewGame();
+    }
+    else if(computerScore == 5){
+        console.log('Computer Wins!')
+        startNewGame();
+    }
+    else return;
+}
+
+function updateHistory(player, computer){
+    let newElement = document.createElement('p');
+    newElement.textContent = `${player} vs ${computer}`;
+    history.insertAdjacentElement('afterbegin', newElement);
+}
+
+function clearHistory(){
+    while(history.firstChild){
+        history.removeChild(history.firstChild);
+    }
+}
+
+function test(e){
+    if (e.target.id == 'newGame') startNewGame();
+    if (e.target.id == 'Rock' || e.target.id == 'Paper' || e.target.id == 'Scissors'){
+        playRound(e); 
+        updateScore();
+        checkForWinner();
+    } 
 }
 
 
-//Play 5 Rounds. Determine the Winner.
-function game() {
-    const ROUNDS = 5;
-    let playerScore = 0;
-    let computerScore = 0;
-
-    while ((playerScore < ROUNDS) && (computerScore < ROUNDS)){
-        let player = playerPlay();
-        console.log('Player Selects: ' + player);
-        let computer = computerPlay();
-        console.log('Computer Selects: ' + computer);
-        let outcome = playRound(player, computer);
-
-        if (outcome == 0){
-            console.log('You Both Tied!');
-        }
-
-        if (outcome == -2 ||outcome == 1){
-            computerScore += 1;
-            console.log('You Lose!');
-        }
-
-        if (outcome == -1 || outcome == 2){
-            playerScore += 1;
-            console.log('You Win!');
-        } 
-        console.log('Player: ' + playerScore + ' Computer: ' + computerScore);
-        console.log('');
-    }
-
-    if (playerScore == ROUNDS) {
-        console.log('Congratulations! You Win');
-        return;
-    }
-
-    if (computerScore == ROUNDS) {
-        console.log('Sorry! The Computer Wins');
-        return;
-    }
-}
-
+buttons.addEventListener('click', test);
