@@ -15,41 +15,34 @@
         <h2>First Player To Score 5 Wins!</h2>
     </div>
 
-    <button id='newGame'>Start Game!</button>
-
-    <div class='main'>
+    <div class='container'>
         <div class='playerContainer'>
             <div class='title'>Player</div>
-            
-            <div class='scores'>Score:
+            <div class='playerHand'></div>
+            <div class='score'>Score:
                 <div class='playerScore'>0</div>
             </div>
-            <div class='options'>
-                <button id='Rock'><img src="img/rock.png">Rock</button>
-                <button id='Paper'><img src="img/paper.png">Paper</button>
-                <button id='Scissors'><img src="img/scissors.png">Scissors</button>
-            </div>
         </div>
-
-        <div class='resultsContainer'></div>
 
         <div class='computerContainer'>
             <div class='title'>Computer</div>
-            <div class='scores'>Score:
+            <div class='computerHand'></div>
+            <div class='score'>Score:
                 <div class='computerScore'>0</div>
             </div>
-            <div class='options'>
-                <button><img src="img/rock.png">Rock</button>
-                <button><img src="img/paper.png">Paper</button>
-                <button><img src="img/scissors.png">Scissors</button>
-            </div>
         </div>
+    </div>
+
+    <div class='outcomeContainer'><p>Select a Hand to Begin Playing!</p></div>
+
+    <div class='optionsContainer'>
+        <button id='Rock'><img src="img/rock.png">Rock</button>
+        <button id='Paper'><img src="img/paper.png">Paper</button>
+        <button id='Scissors'><img src="img/scissors.png">Scissors</button>
     </div>
 
     <div class='footer'>
         <p>Copyright © <a href="https://github.com/Bectell530">Bectell530</a> </p>
     </div>
-
 </body>
-
 </html>

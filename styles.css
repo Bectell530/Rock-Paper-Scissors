@@ -1,25 +1,23 @@
 body{
-    background-color: #222831;
-    color: honeydew;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #34495E;
+    color: honeydew;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
     max-height: 100vh;
-}
-
-.header{
-    margin-bottom: 25px;
-}
-
-.footer{
-    font-size: 1em;
+    padding: 0;
+    margin: 0;
 }
 
 a{
     color: #FFFFFF;
     text-decoration: none;
+}
+
+.header{
+    margin-bottom: 15px;
 }
 
 h1{
@@ -30,104 +28,141 @@ h1{
 }
 
 h2{
-    font-size: 4vw;
+    font-size: 3vw;
     margin: 0;
 }
 
-.main{
+.footer{
+    position: absolute;
+    bottom: 0;
+}
+
+.container{
     display: flex;
-    justify-content: center;
-    height: 100vh;
-    width: 100%;
+    max-width: 800px;
 }
 
 .playerContainer, 
 .computerContainer{
     display:flex;
-    flex: 1 1 8em;
-    flex-direction: column;
-    border: solid white 3px;
-    border-radius: 20px;
-    align-items: center;
-    justify-content:space-evenly;
-    margin: 0.25em;
-    max-height: 45vh;
-}
-
-.resultsContainer{
-    display:flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    flex: 1 1 6em;
-    border: solid black 3px;
-    border-radius: 20px;
-    background-color: black;
-    margin: 0.25em 0.25em;
-    overflow: hidden;
-    max-height: 45vh;
-}
-
-.history p{
-    margin: 0.1em;
+    justify-content: space-between;
+    border: solid white 1px;
+    border-radius: 10px;
+    width: 40vw;
+    height: 40vh;
 }
 
 .title{
-    font-size: 5vw;
+    font-size: 7vw;
+    font-weight: 700;
+    color: orange;
+    margin-bottom: 5px;
 }
 
-.scores{
+.score{
     display: flex;
     flex-direction: column;
+    align-items: center;
     font-size: 3vw;
+    max-width: 80px;
 }
 
 .playerScore,
 .computerScore{
-    font-size: 4vw;
     background-color: black;
+    width: 8vw;
+    max-width: 80px;
 }
 
-.options{
+.outcomeContainer{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    border: solid white 1px;
+    border-radius: 5px;
+    margin: 0.25em;
+    max-height: 10vh;
+    width: 80vw;
+    max-width: 800px;
+}
+
+.outcomeContainer p{
+    font-size: 5vw;
+}
+
+.optionsContainer{
     display: flex;
+    justify-content: center;
+    width: 81vw;
+    max-width: 800px;
 }
 
 button{
     display: flex;
     flex-direction: column;
+    flex: 1;
     align-items: center;
-    border: solid black 2px;
-    font-size: 1.5vw;
+    border: solid black 2.5px;
+    border-radius: 5px;
     padding: 0.25em;
-    border-radius: 5px;
+    font-size: 3vw;
     font-weight: bold;
-    min-width: 5em;
-    gap: 3px;
+    max-height: 100px;
 }
 
-img {
-    /* display: block; */
-    max-width:30px;
-    max-height:30px;
-    /* width: auto;
-    height: auto; */
+button:hover{
+    background-color: orange;
 }
 
-#newGame {
-    border: solid black 2px;
-    font-size: 1.5vw;
-    padding: 0.75em;
-    border-radius: 5px;
-    font-weight: bold;
-    max-width: 10em;
-}
-
-button:hover {
-    background-color: #3e8e41
-}
-
-button:active {
-  background-color: #3e8e41;
+button:active{
+  background-color: orange;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+
+.optionsContainer img{
+    width: 5vw;
+    max-width: 50px;
+    max-height: 50px;
+    border: solid black 2.5px;
+    pointer-events: none;
+}
+
+.playerHand img,
+.computerHand img{
+    height: 20vw;
+    max-height: 160px;
+}
+
+@media screen and (min-width: 1000px){
+    h1{
+        font-size: 80px;
+    }
+
+    h2{
+        font-size: 30px;
+    }
+
+    .outcomeContainer p{
+        font-size: 50px;
+    }
+
+    .title{
+        font-size: 70px;
+    }
+
+    .score{
+        font-size: 30px;
+    }
+    
+    .playerScore,
+    .computerScore{
+        font-size: 25px;
+    }
+
+    button{
+        font-size: 30px;
+    }
+  }
