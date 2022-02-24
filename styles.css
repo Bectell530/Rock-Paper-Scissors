@@ -126,7 +126,6 @@ button:active{
     width: 5vw;
     max-width: 50px;
     max-height: 50px;
-    border: solid black 2.5px;
     pointer-events: none;
 }
 
